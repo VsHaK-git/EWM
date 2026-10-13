@@ -12,6 +12,7 @@ import { CollectionPointsView } from './components/map/CollectionPointsView';
 import { CertificateModal } from './components/certificate/CertificateModal';
 import { SmartClassifierModal } from './components/classifier/SmartClassifierModal';
 import { NotificationToast } from './components/common/NotificationToast';
+import { AIChatAssistantWidget } from './components/chat/AIChatAssistantWidget';
 
 const MainContent: React.FC = () => {
   const { role, activeTab } = useApp();
@@ -56,10 +57,11 @@ export const App: React.FC = () => {
           <MainContent />
         </main>
         
-        {/* Modals & Overlays */}
+        {/* Modals, Overlays & AI Assistant Widget */}
         <CertificateModal />
         <SmartClassifierModal />
         <NotificationToast />
+        <AIChatAssistantWidget />
 
         {/* Civic Operational Footer */}
         <footer style={{ borderTop: '1px solid var(--border-light)', background: '#ffffff', padding: '16px 24px', fontSize: '12px', color: 'var(--text-muted)' }}>

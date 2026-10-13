@@ -240,7 +240,7 @@ export const TrackingView: React.FC = () => {
                     </div>
                     {currentReq.organizationName && (
                       <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
-                        {currentReq.organizationName} (Institutional Generator)
+                        {currentReq.organizationName} (Bulk Consignor)
                       </div>
                     )}
                   </div>

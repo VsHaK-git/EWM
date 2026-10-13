@@ -73,7 +73,7 @@ export const CertificateModal: React.FC = () => {
               </div>
 
               <div>
-                <div className="cert-field-label">E-Waste Generator (Institution / Citizen)</div>
+                <div className="cert-field-label">E-Waste Generator / Consignor</div>
                 <div className="cert-field-value">{selectedCertificate.organizationName}</div>
                 <div style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
                   {selectedCertificate.generatorAddress}

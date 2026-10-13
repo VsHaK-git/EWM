@@ -98,7 +98,9 @@ const STORAGE_KEYS = {
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [role, setRoleState] = useState<UserRole>(() => {
-    return (localStorage.getItem(STORAGE_KEYS.ROLE) as UserRole) || 'individual';
+    const saved = localStorage.getItem(STORAGE_KEYS.ROLE) as UserRole;
+    if (saved === 'organization') return 'individual';
+    return saved || 'individual';
   });
 
   const [activeTab, setActiveTab] = useState<string>('home');

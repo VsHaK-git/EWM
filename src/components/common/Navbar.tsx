@@ -5,14 +5,15 @@ import {
   Recycle,
   Search,
   User,
-  Building,
   Truck,
   Factory,
   ShieldCheck,
   Camera,
   RotateCcw,
-  Sparkles
+  Sparkles,
+  Menu
 } from 'lucide-react';
+import { RightSidebarDrawer } from './RightSidebarDrawer';
 
 export const Navbar: React.FC = () => {
   const {
@@ -29,6 +30,7 @@ export const Navbar: React.FC = () => {
     showToast
   } = useApp();
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [localSearch, setLocalSearch] = useState(trackingQuery);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -136,6 +138,16 @@ export const Navbar: React.FC = () => {
             <span>Reset Demo</span>
           </button>
 
+          <button
+            className="header-menu-toggle-btn"
+            onClick={() => setIsSidebarOpen(true)}
+            title="Open navigation menu drawer"
+            aria-label="Open navigation menu drawer"
+          >
+            <Menu size={15} />
+            <span>Menu</span>
+          </button>
+
           {/* Role Switcher */}
           <div className="role-switcher-container">
             <button
@@ -148,17 +160,6 @@ export const Navbar: React.FC = () => {
             >
               <User size={14} />
               <span>Citizen</span>
-            </button>
-            <button
-              className={`role-tab-btn ${role === 'organization' && activeTab !== 'home' ? 'active' : ''}`}
-              onClick={() => {
-                setRole('organization');
-                setActiveTab('overview');
-              }}
-              title="College / Corporate (DY Patil Eng.)"
-            >
-              <Building size={14} />
-              <span>Institution</span>
             </button>
             <button
               className={`role-tab-btn ${role === 'collector' && activeTab !== 'home' ? 'active' : ''}`}
@@ -197,7 +198,7 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Sub-navbar tabs */}
+      {/* Sub-navbar tabs: Shows ONLY Platform Home and the Menu toggle by default */}
       <div className="sub-navbar">
         <div className="sub-navbar-inner">
           <ul className="nav-links-list">
@@ -206,26 +207,38 @@ export const Navbar: React.FC = () => {
               onClick={() => setActiveTab('home')}
               style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
             >
-              <Sparkles size={13} color={activeTab === 'home' ? 'var(--eco-primary)' : '#10b981'} />
+              <Sparkles size={14} color={activeTab === 'home' ? 'var(--eco-primary)' : '#10b981'} />
               <span>Platform Home</span>
             </li>
-            {activeNavItems.map(item => (
-              <li
-                key={item.id}
-                className={`nav-link-item ${activeTab === item.id ? 'active' : ''}`}
-                onClick={() => setActiveTab(item.id)}
-              >
-                {item.label}
-              </li>
-            ))}
           </ul>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--text-muted)' }}>
-            <span style={{ display: 'inline-block', width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }}></span>
-            <span>Target Region: <strong>Pune Metro & PCMC, Maharashtra</strong></span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--text-muted)' }}>
+              <span style={{ display: 'inline-block', width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }}></span>
+              <span>Target Region: <strong>Pune Metro & PCMC, Maharashtra</strong></span>
+            </div>
+
+            <button
+              className="nav-drawer-btn"
+              onClick={() => setIsSidebarOpen(true)}
+              aria-label="Open navigation drawer"
+              title="Open all portals & navigation drawer"
+            >
+              <Menu size={16} />
+              <span>Menu</span>
+              <span className="drawer-btn-badge">
+                {activeTab === 'home' ? role.toUpperCase() : activeNavItems.find(i => i.id === activeTab)?.label || role.toUpperCase()}
+              </span>
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Right-Side Sliding Navigation Drawer */}
+      <RightSidebarDrawer
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
     </header>
   );
 };

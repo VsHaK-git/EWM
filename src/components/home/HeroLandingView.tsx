@@ -7,7 +7,6 @@ import {
   ArrowRight,
   ShieldCheck,
   Truck,
-  Building2,
   Factory,
   User,
   Scale,
@@ -19,11 +18,7 @@ import {
   FileCheck2,
   Camera,
   MapPin,
-  TrendingUp,
-  Award,
-  ChevronRight,
-  Play,
-  RotateCcw
+  Award
 } from 'lucide-react';
 
 export const HeroLandingView: React.FC = () => {
@@ -328,11 +323,11 @@ export const HeroLandingView: React.FC = () => {
 
             <div className="metric-cell">
               <div className="metric-icon-wrap purple">
-                <Building2 size={22} />
+                <MapPin size={22} />
               </div>
               <div className="metric-data">
-                <div className="metric-number">94+</div>
-                <div className="metric-label">Registered Corporate & Labs</div>
+                <div className="metric-number">18</div>
+                <div className="metric-label">Pune Drop-Off Depots</div>
               </div>
             </div>
           </div>
@@ -510,7 +505,7 @@ export const HeroLandingView: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          5 ROLE PORTAL LAUNCHPAD
+          ROLE PORTAL LAUNCHPAD
           ========================================================================= */}
       <section className="section-container portals-launchpad-section">
         <div className="section-header-centered">
@@ -520,13 +515,14 @@ export const HeroLandingView: React.FC = () => {
           </div>
           <h2>Dedicated Portals For Every Step of the Chain</h2>
           <p>
-            EcoCycle connects household citizens, corporate campuses, logistics fleets, and smelting recyclers into one unified compliance network.
+            EcoCycle connects household citizens, logistics fleets, authorized smelting recyclers, and civic regulators into one unified compliance network.
           </p>
         </div>
 
         <div className="portals-grid">
           {/* Card 1: Citizen */}
-          <div className="portal-card" onClick={() => handleLaunchRolePortal('individual', 'dashboard')}>
+          <div className="portal-card featured" onClick={() => handleLaunchRolePortal('individual', 'dashboard')}>
+            <div className="featured-ribbon">HOUSEHOLDS & RESIDENTS</div>
             <div className="portal-icon-box green">
               <User size={24} />
             </div>
@@ -536,34 +532,12 @@ export const HeroLandingView: React.FC = () => {
               Schedule free doorstep pickups in 60 seconds, choose convenient Pune time slots, and verify calibrated weights on-site.
             </p>
             <ul className="portal-bullet-list">
-              <li><CheckCircle2 size={14} /> Free doorstep doorstep service</li>
+              <li><CheckCircle2 size={14} /> Free doorstep collection service</li>
               <li><CheckCircle2 size={14} /> Digital scale slip on arrival</li>
               <li><CheckCircle2 size={14} /> Green recycling milestones</li>
             </ul>
             <div className="portal-action-row">
               <span>Open Citizen Portal</span>
-              <ArrowRight size={14} />
-            </div>
-          </div>
-
-          {/* Card 2: Institution */}
-          <div className="portal-card featured" onClick={() => handleLaunchRolePortal('organization', 'overview')}>
-            <div className="featured-ribbon">ENTERPRISE & CSR</div>
-            <div className="portal-icon-box blue">
-              <Building2 size={24} />
-            </div>
-            <div className="portal-tag">Colleges & IT Parks</div>
-            <h3>Institutional & Bulk Portal</h3>
-            <p>
-              Decommission computer labs, servers, and office IT equipment with serial number tracking, multi-asset manifests, and ESG auditing.
-            </p>
-            <ul className="portal-bullet-list">
-              <li><CheckCircle2 size={14} /> IT asset register & serial tags</li>
-              <li><CheckCircle2 size={14} /> Multi-ton bulk scheduling</li>
-              <li><CheckCircle2 size={14} /> Auditable Form-6 CSR certificates</li>
-            </ul>
-            <div className="portal-action-row">
-              <span>Open Enterprise Portal</span>
               <ArrowRight size={14} />
             </div>
           </div>
@@ -708,7 +682,7 @@ export const HeroLandingView: React.FC = () => {
             </div>
             <h2>Ready to Clear Your Old Electronics Responsibly?</h2>
             <p>
-              Join thousands of conscious Pune citizens and 90+ IT companies making electronics circular. Zero cost, zero hassle, 100% legal compliance.
+              Join thousands of conscious Pune citizens making electronics circular. Zero cost, zero hassle, 100% legal compliance.
             </p>
             <div className="cta-buttons-row">
               <button
